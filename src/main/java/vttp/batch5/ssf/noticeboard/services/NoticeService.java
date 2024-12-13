@@ -31,8 +31,7 @@ public class NoticeService {
 
 	public ResponseEntity<String> postToNoticeServer(Notice notice) {
 
-		// String apiEndpoint =
-		// "https://publishing-production-d35a.up.railway.app/notice";
+		
 		JsonObject noticeJson = notice.toJson();
 		System.out.println("Generated JSON: " + noticeJson.toString());
 
