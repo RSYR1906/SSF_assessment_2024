@@ -1,5 +1,7 @@
 package vttp.batch5.ssf.noticeboard.controllers;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
@@ -69,7 +71,8 @@ public class NoticeController {
     @GetMapping("/status")
     public ResponseEntity<String> checkHealth() {
         try {
-            if (redisTemplate.randomKey() == null) {
+            Set<String> keys = redisTemplate.keys("*"); // Fetch all keys
+            if ((!keys.isEmpty()) && redisTemplate.randomKey() == null) {
                 return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
                         .contentType(MediaType.APPLICATION_JSON)
                         .body("");
