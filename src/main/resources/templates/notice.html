@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Notice Board</title>
+		<link rel="stylesheet" href="/styles.css">
+	</head>
+	<body>
+
+		<!-- 
+			IMPORTANT *** DO NOT MODIFY THIS FILE ***
+				If you change this file, any assessment task
+				referencing this HTML will be invalidated.
+		-->
+
+		<h1>Community Notice Board</h1>
+
+		<form method="POST" action="/notice" data-th-object="${notice}">
+			<table>
+				<tr>
+					<td> Title: </td>
+					<td>
+						<input type="text" name="title" size="30" placeholder="Notice title"
+								data-th-field="*{title}">
+					</td>
+					<td>
+						<p data-th-if="*{#fields.hasErrors('title')}" data-th-errors="*{title}"
+								class="error"> </p>
+					</td>
+				</tr>
+				<tr>
+					<td> Poster: </td>
+					<td>
+						<input type="text" name="poster" size="30" placeholder="Poster's email"
+								data-th-field="*{poster}">
+					</td>
+					<td>
+						<p data-th-if="*{#fields.hasErrors('poster')}" data-th-errors="*{poster}"
+								class="error"> </p>
+					</td>
+				</tr>
+				<tr>
+					<td> Post date: </td>
+					<td>
+						<input type="date" name="postDate" size="30" placeholder="Date to post. Must be a future date"
+								data-th-field="*{postDate}">
+					</td>
+					<td>
+						<p data-th-if="*{#fields.hasErrors('postDate')}" data-th-errors="*{postDate}"
+								class="error"> </p>
+					</td>
+				</tr>
+				<tr>
+					<td> Categories: </td>
+					<td>
+							Public notice <input type="checkbox" name="category" value="public-notice"
+								data-th-field="*{categories}">
+							Sport <input type="checkbox" name="category" value="sport"
+								data-th-field="*{categories}">
+							Meeting <input type="checkbox" name="category" value="meeting"
+								data-th-field="*{categories}">
+							Garage sale <input type="checkbox" name="category" value="garage-sale"
+								data-th-field="*{categories}">
+							Others <input type="checkbox" name="category" value="others"
+								data-th-field="*{categories}">
+					</td>
+					<td>
+						<p data-th-if="*{#fields.hasErrors('categories')}" data-th-errors="*{categories}"
+								class="error"> </p>
+					</td>
+				</tr>
+				<tr>
+					<td> Text: </td>
+					<td>
+						<textarea name="text" cols="30" rows="5" placeholder="Your notice"
+								data-th-field="*{text}"></textarea>
+					</td>
+					<td>
+						<p data-th-if="*{#fields.hasErrors('text')}" data-th-errors="*{text}"
+								class="error"> </p>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td> <button type="submit"> Post </button> </td>
+				</tr>
+			</table>
+		</form>
+		
+	</body>
+</html>
